@@ -39,14 +39,17 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE 
 
+function first(array, cbfunc){
+  cbfunc(array[0])
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
+first(names, firstName => {
+  console.log('The first name in names is ' + firstName)
+})
 
 
 
@@ -58,15 +61,17 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+function last (array, cbFunc){
+  cbFunc(array[array.length-1])
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+last(names, lastName => {
+  console.log('The last name in names is ' + lastName)
+})
 
 
 
@@ -81,23 +86,31 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE 
 
+function contains(array, name, cbFunc){
+  if(array.includes(name))
+    cbFunc(true)
+  else(
+    cbFunc(false)
+  )
+}
+
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+})
 
 
 
 ////////// PROBLEM 5 //////////
-
+//var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 /*
   Write a function called uniq that takes in an array and a callback function.
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
@@ -105,6 +118,18 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+
+function uniq(array, cbFunc){
+  for(let i = 0; i < array.length; i++){
+    for(let j = i+1; j < array.length; j++){
+      if(array[i]==array[j]){
+        array.splice(j,1)
+        j--
+      }
+    }
+  }
+  cbFunc(array)
+}
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -117,6 +142,11 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 
 
+function uniqArr(array){
+  console.log(`The new names array with all the duplicate items removed is ${array}`)
+}
+
+uniq(names, uniqArr)
 ////////// PROBLEM 6 //////////
 
 /* 
@@ -126,6 +156,11 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE 
 
+function each(array, cbFunc){
+  for(let i = 0; i < array.length; i++){
+    cbFunc(array[i], i)
+  }
+}
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -136,9 +171,11 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE
 
+function print(item, index){
+  console.log(`The item at ${index} is ${item}`)
+}
 
-
-
+each(names, print)
 
 ////////// CHALLENGES //////////
 
