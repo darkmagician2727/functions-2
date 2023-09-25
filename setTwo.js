@@ -156,10 +156,14 @@ uniq(names, uniqArr)
 
 // CODE HERE 
 
+// function each(array, cbFunc){
+//   for(let i = 0; i < array.length; i++){
+//     cbFunc(array[i], i)
+//   }
+// }
+
 function each(array, cbFunc){
-  for(let i = 0; i < array.length; i++){
-    cbFunc(array[i], i)
-  }
+  array.forEach((element, i) => cbFunc(element, i))
 }
 
 /*
@@ -171,11 +175,12 @@ function each(array, cbFunc){
 
 // CODE HERE
 
-function print(item, index){
-  console.log(`The item at ${index} is ${item}`)
-}
+// function print(item, index){
+//   console.log(`The item at ${index} is ${item}`)
+// }
+// each(names, print)
 
-each(names, print)
+each(names, (element, i) => console.log(`The item at ${i} is ${element}`))
 
 ////////// CHALLENGES //////////
 
@@ -198,6 +203,12 @@ each(names, print)
 */
 
 // CODE HERE
+function addingFactory(num){
+  return function(num2){
+    return(num + num2)
+  }
+}
+
 
 /*
   Now that you have addingFactory, you can create other
@@ -212,6 +223,7 @@ each(names, print)
 */
 
 // CODE HERE
+let addTen = addingFactory(10)
 
 /*
   Now the inner function is stored in the addTen variable! 
@@ -224,6 +236,8 @@ each(names, print)
 */
 
 // CODE HERE
+console.log(addTen(5))
+console.log(addTen(7))
 
 /*
   Let's make another function from the addingFactory. 
@@ -238,7 +252,8 @@ each(names, print)
 
 // CODE HERE
 
-
+let add27 = addingFactory(27)
+console.log(add27(3))
 
 
 ////////// CHALLENGE 2 //////////
