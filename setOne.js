@@ -138,6 +138,16 @@ print the multiplication of the first and second numbers. If not, print "Cannot 
 
 // CODE HERE
 
+function multiplyingFactory(num){
+    return function(num2){
+        if(num >= 5){
+            console.log(num * num2)
+        }
+        else{
+            console.log("Cannot multiply: the first number is smaller than 5.")
+        }
+    }
+}
 
 /* 
 Let's invoke the 'multiplyingFactory' function that will return another function, 
@@ -145,7 +155,7 @@ and save it into a variable called 'timesFour.' Let's pass in number 3 as a para
 */
 
 // CODE HERE
-
+let timesFour = multiplyingFactory(5)
 
 /* 
 Now, timesFour is the new function (the inner function that was being returned when we invoked 'multiplyingFactory' function). 
@@ -157,8 +167,9 @@ Run the code in node to see the printed result. You should see "Cannot multiply:
 */
 
 // INVOKE 'timesFour' HERE
-
+timesFour(4)
 
 /* 
-Change the param for 'multiplyingFactory' invocation to number 5. Then invoke 'timesFour' again, passing in number 4. Run the code in node, and you should see 20.
+Change the param for 'multiplyingFactory' invocation to number 5. Then invoke 'timesFour' again, passing in number 4. 
+Run the code in node, and you should see 20.
 */
